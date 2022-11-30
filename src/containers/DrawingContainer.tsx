@@ -5,9 +5,6 @@ import styled from '@mui/system/styled';
 import Toolbar from "../components/Toolbar";
 import ShapesBar from "../components/ShapesBar";
 import Canvas from "../components/Canvas";
-import {RootState} from "../store";
-import {useSelector} from 'react-redux';
-import {TShape} from "../types";
 
 
 const Item = styled('div')(({theme}) => ({
@@ -19,21 +16,7 @@ const Item = styled('div')(({theme}) => ({
     textAlign: 'center',
 }));
 
-
 export default function DrawingContainer() {
-
-    const {drawingDocument} = useSelector((state: RootState) => state.drawingReducer);
-
-    const draw = (ctx: CanvasRenderingContext2D) => {
-        // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-        ctx.fillStyle = 'white'
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-
-        drawingDocument.shapes.forEach((shape: TShape) => {
-            ctx.fillStyle = 'green'
-            ctx.fillRect(shape.x, shape.y, shape.width, shape.height)
-        })
-    }
 
     return (
         <Box sx={{flexGrow: 1}}>
@@ -50,7 +33,7 @@ export default function DrawingContainer() {
                 </Grid>
                 <Grid xs={11}>
                     <Item style={{backgroundColor: '#ced7e0'}}>
-                        <Canvas draw={draw}/>
+                        <Canvas/>
                     </Item>
                 </Grid>
             </Grid>
