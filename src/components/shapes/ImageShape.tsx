@@ -4,7 +4,7 @@ import useImage from 'use-image';
 import {Image, Transformer} from 'react-konva';
 
 export default function ImageShape({ shapeProps, isSelected, onSelect, onChange }) {
-    const [image] = useImage('https://konvajs.org/assets/lion.png');
+    const [image] = useImage(shapeProps.imageURL);
     const shapeRef = useRef(null);
     const trRef = useRef(null);
 

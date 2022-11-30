@@ -61,6 +61,7 @@ const initialDoc: TDrawingDocument = {
             height: 100,
             fill: 'white',
             id: 'image1',
+            imageURL: 'https://konvajs.org/assets/lion.png',
         } as TShapeImage,
     ]
 }

@@ -1,11 +1,10 @@
 import React from "react";
 
 import IconButton from '@mui/material/IconButton';
-import {TextSnippet, Photo} from '@mui/icons-material';
+import {TextSnippet, Photo, Rectangle} from '@mui/icons-material';
 import {useDispatch} from 'react-redux';
 import {addShape} from "../reducer/drawingReducer";
-import {ShapeTypeEnum, TShapeCircle, TShapeRect, TShapeText} from "../types";
-import ImageLibrary from "./ImageLibrary";
+import {ShapeTypeEnum, TShapeImage, TShapeRect, TShapeText} from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function ShapesBar() {
@@ -19,15 +18,6 @@ export default function ShapesBar() {
         fill: 'red',
         id: 'rect',
     }
-    const newCircle: TShapeCircle = {
-        type: ShapeTypeEnum.circle,
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0,
-        fill: 'red',
-        id: 'circle',
-    }
 
     const newText: TShapeText = {
         type: ShapeTypeEnum.text,
@@ -39,6 +29,16 @@ export default function ShapesBar() {
         fill: 'red',
         id: 'text',
     }
+    const newImage: TShapeImage = {
+        type: ShapeTypeEnum.image,
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0,
+        fill: 'white',
+        id: 'image',
+        imageURL: 'https://konvajs.org/assets/lion.png',
+    }
 
 
     return (
@@ -49,11 +49,15 @@ export default function ShapesBar() {
                 <TextSnippet/>
             </IconButton>
             <IconButton
-                onClick={() => dispatch(addShape({...newRect, id: 'rect' + uuidv4()}))}
+                onClick={() => dispatch(addShape({...newImage, id: 'rect' + uuidv4()}))}
                 color="primary" aria-label="Image" component="label">
                 <Photo/>
             </IconButton>
-            <ImageLibrary/>
+            <IconButton
+                onClick={() => dispatch(addShape({...newRect, id: 'rect' + uuidv4()}))}
+                color="primary" aria-label="Rectangle" component="label">
+                <Rectangle/>
+            </IconButton>
         </div>
     )
 }
