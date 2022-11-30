@@ -1,29 +1,38 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {TDrawingDocument, TShape} from "../types";
+import {ShapeTypeEnum, TDrawingDocument, TShape, TShapeRect, TShapeText} from "../types";
 
 interface drawingState {
     drawingDocument: TDrawingDocument,
     history: TDrawingDocument[],
     historyIndex: number
 }
+
 const cloneDoc = (doc: TDrawingDocument) => JSON.parse(JSON.stringify(doc))
 
-const initialDoc : TDrawingDocument = {
+const initialDoc: TDrawingDocument = {
     shapes: [
         {
-            type: 'rect',
+            type: ShapeTypeEnum.rect,
             x: 10,
             y: 10,
             width: 200,
             height: 100
-        },
+        } as TShapeRect,
         {
-            type: 'rect',
+            type: ShapeTypeEnum.rect,
             x: 110,
             y: 150,
             width: 50,
             height: 100
-        },
+        } as TShapeRect,
+        {
+            type: ShapeTypeEnum.text,
+            x: 170,
+            y: 150,
+            width: 50,
+            height: 100,
+            text: 'Life is an Adventure'
+        } as TShapeText,
     ]
 }
 
@@ -39,7 +48,7 @@ export const drawingSlice = createSlice({
     initialState,
     reducers: {
         newDrawingDocument: (state, action: PayloadAction<void>): void => {
-            const newDoc : TDrawingDocument = {shapes: []}
+            const newDoc: TDrawingDocument = {shapes: []}
             state.drawingDocument = newDoc
             state.history = [cloneDoc(newDoc)]
             state.historyIndex = 0

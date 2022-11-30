@@ -1,7 +1,18 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
-import {TShape} from "../types";
+import {ShapeTypeEnum, TShape, TShapeRect, TShapeText} from "../types";
+
+const drawRect = (ctx: CanvasRenderingContext2D, shape: TShapeRect) => {
+    ctx.fillStyle = 'green'
+    ctx.fillRect(shape.x, shape.y, shape.width, shape.height)
+}
+
+const drawText = (ctx: CanvasRenderingContext2D, shape: TShapeText) => {
+    ctx.fillStyle = 'red'
+    ctx.font = 'Italic 20px "Fira Sans", serif';
+    ctx.fillText(shape.text, shape.x, shape.y);
+}
 
 const Canvas = () => {
 
@@ -15,8 +26,21 @@ const Canvas = () => {
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
         drawingDocument.shapes.forEach((shape: TShape) => {
-            ctx.fillStyle = 'green'
-            ctx.fillRect(shape.x, shape.y, shape.width, shape.height)
+            switch (shape.type) {
+                case ShapeTypeEnum.circle:
+                    break
+
+                case ShapeTypeEnum.rect:
+                    drawRect(ctx, shape as TShapeRect)
+                    break
+
+                case ShapeTypeEnum.text:
+                    drawText(ctx, shape as TShapeText)
+                    break
+
+                case ShapeTypeEnum.image:
+                    break
+            }
         })
     }
 
