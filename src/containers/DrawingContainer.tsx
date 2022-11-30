@@ -4,6 +4,7 @@ import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import Header from "../components/Header";
 import Shapes from "../components/Shapes";
+import Canvas from "../components/Canvas";
 
 
 const Item = styled('div')(({theme}) => ({
@@ -18,6 +19,11 @@ const Item = styled('div')(({theme}) => ({
 
 export default function DrawingContainer() {
 
+    const draw = (ctx:CanvasRenderingContext2D) => {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.fillStyle = 'green'
+        ctx.fillRect(10, 10, 100, 100)
+    }
 
     return (
         <Box sx={{flexGrow: 1}}>
@@ -27,12 +33,14 @@ export default function DrawingContainer() {
                         <Header />
                     </Item>
                 </Grid>
-                <Grid xs={2}>
-                    <Item><Shapes></Shapes></Item>
-                </Grid>
-                <Grid xs={10}>
+                <Grid xs={1}>
                     <Item>
-                        drawing canvas
+                        <Shapes />
+                    </Item>
+                </Grid>
+                <Grid xs={11}>
+                    <Item>
+                        <Canvas draw={draw} />
                     </Item>
                 </Grid>
             </Grid>
