@@ -20,7 +20,7 @@ const Canvas = (props: TCanvasProps) => {
         render()
     }, [draw])
 
-    return <canvas ref={canvasRef}/>
+    return <canvas width={500} height={700} ref={canvasRef}/>
 }
 
 export default Canvas

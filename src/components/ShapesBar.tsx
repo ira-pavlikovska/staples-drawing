@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import {TextSnippet, Photo} from '@mui/icons-material';
 
 
-export default function Shapes() {
+export default function ShapesBar() {
     return (
         <div style={{display: "flex", flexDirection: "column"}}>
             <IconButton color="primary" aria-label="Text" component="label">

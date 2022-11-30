@@ -8,7 +8,7 @@ import DrawingContainer from "./containers/DrawingContainer";
 
 function App() {
   return (
-      <div>
+      <div style={{backgroundColor: '#ced7e0'}}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<DrawingContainer/>}/>

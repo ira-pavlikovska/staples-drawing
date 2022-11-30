@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import {NoteAdd, Undo, Redo, Delete} from '@mui/icons-material';
 
 
-export default function Header() {
+export default function Toolbar() {
     return (
         <div>
             <IconButton color="primary" aria-label="New Document" component="label">
