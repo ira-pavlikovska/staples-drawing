@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react'
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
-import {ShapeTypeEnum, TShape, TShapeRect, TShapeText} from "../types";
+import {ShapeTypeEnum, TShape, TShapeImage, TShapeRect, TShapeText} from "../types";
 
 const drawRect = (ctx: CanvasRenderingContext2D, shape: TShapeRect) => {
     ctx.fillStyle = 'green'
@@ -12,6 +12,12 @@ const drawText = (ctx: CanvasRenderingContext2D, shape: TShapeText) => {
     ctx.fillStyle = 'red'
     ctx.font = 'Italic 20px "Fira Sans", serif';
     ctx.fillText(shape.text, shape.x, shape.y);
+}
+
+const drawImage = (ctx: CanvasRenderingContext2D, shape: TShapeImage) => {
+    const image = document.getElementById(shape.imageId);
+    ctx.drawImage(image as CanvasImageSource, shape.x, shape.y, shape.width, shape.height);
+
 }
 
 const Canvas = () => {
@@ -39,6 +45,7 @@ const Canvas = () => {
                     break
 
                 case ShapeTypeEnum.image:
+                    drawImage(ctx, shape as TShapeImage)
                     break
             }
         })

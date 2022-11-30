@@ -28,4 +28,5 @@ export interface TShapeText extends TShape {
 };
 
 export interface TShapeImage extends TShape {
+    imageId: string;
 }

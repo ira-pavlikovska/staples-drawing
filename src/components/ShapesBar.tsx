@@ -5,6 +5,7 @@ import {TextSnippet, Photo} from '@mui/icons-material';
 import {useDispatch} from 'react-redux';
 import {addShape} from "../reducer/drawingReducer";
 import {ShapeTypeEnum, TShapeCircle, TShapeRect, TShapeText} from "../types";
+import ImageLibrary from "./ImageLibrary";
 
 
 export default function ShapesBar() {
@@ -46,6 +47,7 @@ export default function ShapesBar() {
                 color="primary" aria-label="Image" component="label">
                 <Photo/>
             </IconButton>
+            <ImageLibrary/>
         </div>
     )
 }

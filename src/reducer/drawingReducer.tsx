@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {ShapeTypeEnum, TDrawingDocument, TShape, TShapeRect, TShapeText} from "../types";
+import {ShapeTypeEnum, TDrawingDocument, TShape, TShapeImage, TShapeRect, TShapeText} from "../types";
 
 interface drawingState {
     drawingDocument: TDrawingDocument,
@@ -33,6 +33,14 @@ const initialDoc: TDrawingDocument = {
             height: 100,
             text: 'Life is an Adventure'
         } as TShapeText,
+        {
+            type: ShapeTypeEnum.image,
+            x: 170,
+            y: 200,
+            width: 70,
+            height: 100,
+            imageId: 'image1'
+        } as TShapeImage,
     ]
 }
 
