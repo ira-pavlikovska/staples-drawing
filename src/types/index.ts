@@ -16,10 +16,10 @@ export type TShape = {
     y: number;
     width: number;
     height: number;
+    fill: string;
 };
 
 export interface TShapeRect extends TShape {
-    fill: string;
 }
 
 export interface TShapeCircle extends TShape {
@@ -30,5 +30,5 @@ export interface TShapeText extends TShape {
 };
 
 export interface TShapeImage extends TShape {
-    imageId: string;
+    // imageId: string;
 }

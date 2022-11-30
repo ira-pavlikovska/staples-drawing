@@ -4,14 +4,14 @@ import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import Toolbar from "../components/Toolbar";
 import ShapesBar from "../components/ShapesBar";
-import Canvas from "../components/Canvas";
 import { Stage, Layer, Rect, Text, Transformer } from 'react-konva';
 import Rectangle from '../components/shapes/Rectangle'
-import {ShapeTypeEnum, TShape, TShapeRect} from "../types";
+import {ShapeTypeEnum, TShape, TShapeImage, TShapeRect, TShapeText} from "../types";
 import Konva from 'konva';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
 import {selectShape, updateShapes} from "../reducer/drawingReducer";
+import ImageShape from "../components/shapes/ImageShape";
 
 
 const Item = styled('div')(({theme}) => ({
@@ -51,27 +51,58 @@ export default function DrawingContainer() {
                 </Grid>
                 <Grid xs={11}>
                     <Item style={{backgroundColor: '#ced7e0'}}>
-                        <Stage width={500} height={700}
+                        <Stage width={window.innerWidth} height={window.innerHeight}
                                onMouseDown={checkDeselect}
                         >
                             <Layer>
-                                {drawingDocument.shapes.map((rect, i) => {
-                                    return (
-                                        <Rectangle
-                                            key={i}
-                                            shapeProps={rect}
-                                            isSelected={rect.id === selectedId}
-                                            onSelect={() => {
-                                                dispatch(selectShape(rect.id));
-                                            }}
-                                            onChange={(newAttrs: TShapeRect) => {
-                                                const rects = drawingDocument.shapes.slice();
-                                                rects[i] = newAttrs;
-                                                dispatch(updateShapes(rects))
-                                            }}
-                                        />
-                                    );
+                                {drawingDocument.shapes.map((shape, i) => {
+                                    switch (shape.type) {
+                                        case ShapeTypeEnum.circle:
+                                            break
+
+                                        case ShapeTypeEnum.rect:
+                                            return (
+                                                <Rectangle
+                                                    key={i}
+                                                    shapeProps={shape}
+                                                    isSelected={shape.id === selectedId}
+                                                    onSelect={() => {
+                                                        dispatch(selectShape(shape.id));
+                                                    }}
+                                                    onChange={(newAttrs: TShapeRect) => {
+                                                        const rects = drawingDocument.shapes.slice();
+                                                        rects[i] = newAttrs;
+                                                        dispatch(updateShapes(rects))
+                                                    }}
+                                                />
+                                            );
+                                            break
+
+                                        case ShapeTypeEnum.text:
+                                            break
+
+                                        case ShapeTypeEnum.image:
+                                            return (
+                                                <ImageShape
+                                                    key={i}
+                                                    shapeProps={shape}
+                                                    isSelected={shape.id === selectedId}
+                                                    onSelect={() => {
+                                                        dispatch(selectShape(shape.id));
+                                                    }}
+                                                    onChange={(newAttrs: TShapeRect) => {
+                                                        const rects = drawingDocument.shapes.slice();
+                                                        rects[i] = newAttrs;
+                                                        dispatch(updateShapes(rects))
+                                                    }}
+                                                />
+                                            );
+                                            break
+                                    }
+
+
                                 })}
+                                {/*<ImageShape/>*/}
                             </Layer>
                         </Stage>
                     </Item>

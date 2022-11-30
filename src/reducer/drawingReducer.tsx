@@ -53,14 +53,15 @@ const initialDoc: TDrawingDocument = {
         //     height: 100,
         //     text: 'Life is an Adventure'
         // } as TShapeText,
-        // {
-        //     type: ShapeTypeEnum.image,
-        //     x: 170,
-        //     y: 200,
-        //     width: 70,
-        //     height: 100,
-        //     imageId: 'image1'
-        // } as TShapeImage,
+        {
+            type: ShapeTypeEnum.image,
+            x: 170,
+            y: 200,
+            width: 70,
+            height: 100,
+            fill: 'white',
+            id: 'image1',
+        } as TShapeImage,
     ]
 }
 

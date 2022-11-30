@@ -25,6 +25,7 @@ export default function ShapesBar() {
         y: 0,
         width: 0,
         height: 0,
+        fill: 'red',
         id: 'circle',
     }
 
@@ -35,6 +36,7 @@ export default function ShapesBar() {
         width: 0,
         height: 0,
         text: 'new text',
+        fill: 'red',
         id: 'text',
     }
 
