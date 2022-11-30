@@ -2,6 +2,8 @@ import React from 'react';
 import {Box} from '@mui/system';
 import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
+import Header from "../components/Header";
+import Shapes from "../components/Shapes";
 
 
 const Item = styled('div')(({theme}) => ({
@@ -22,21 +24,15 @@ export default function DrawingContainer() {
             <Grid container spacing={2}>
                 <Grid xs={12}>
                     <Item>
-                        header
+                        <Header />
                     </Item>
                 </Grid>
                 <Grid xs={2}>
-                    <Item>shapes</Item>
+                    <Item><Shapes></Shapes></Item>
                 </Grid>
                 <Grid xs={10}>
                     <Item>
                         drawing canvas
-                    </Item>
-                </Grid>
-                <Grid xs={12}>
-                    <Item>
-                        footer
-
                     </Item>
                 </Grid>
             </Grid>
