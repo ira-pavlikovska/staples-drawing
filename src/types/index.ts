@@ -11,6 +11,7 @@ export enum ShapeTypeEnum {
 
 export type TShape = {
     type: ShapeTypeEnum;
+    id: string;
     x: number;
     y: number;
     width: number;
@@ -18,6 +19,7 @@ export type TShape = {
 };
 
 export interface TShapeRect extends TShape {
+    fill: string;
 }
 
 export interface TShapeCircle extends TShape {

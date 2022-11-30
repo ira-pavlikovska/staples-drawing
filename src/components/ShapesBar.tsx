@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 import {addShape} from "../reducer/drawingReducer";
 import {ShapeTypeEnum, TShapeCircle, TShapeRect, TShapeText} from "../types";
 import ImageLibrary from "./ImageLibrary";
-
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ShapesBar() {
     const dispatch = useDispatch()
@@ -16,6 +16,8 @@ export default function ShapesBar() {
         y: 0,
         width: 0,
         height: 0,
+        fill: 'red',
+        id: 'rect',
     }
     const newCircle: TShapeCircle = {
         type: ShapeTypeEnum.circle,
@@ -23,6 +25,7 @@ export default function ShapesBar() {
         y: 0,
         width: 0,
         height: 0,
+        id: 'circle',
     }
 
     const newText: TShapeText = {
@@ -31,7 +34,8 @@ export default function ShapesBar() {
         y: 0,
         width: 0,
         height: 0,
-        text: 'new text'
+        text: 'new text',
+        id: 'text',
     }
 
 
@@ -43,7 +47,7 @@ export default function ShapesBar() {
                 <TextSnippet/>
             </IconButton>
             <IconButton
-                onClick={() => dispatch(addShape(newRect))}
+                onClick={() => dispatch(addShape({...newRect, id: 'rect' + uuidv4()}))}
                 color="primary" aria-label="Image" component="label">
                 <Photo/>
             </IconButton>
