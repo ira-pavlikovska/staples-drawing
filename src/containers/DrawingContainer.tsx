@@ -1,13 +1,13 @@
 // @ts-nocheck
-import React, {useState} from 'react';
+import React from 'react';
 import {Box} from '@mui/system';
 import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import Toolbar from "../components/Toolbar";
 import ShapesBar from "../components/ShapesBar";
-import { Stage, Layer, Rect, Text, Transformer } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import Rectangle from '../components/shapes/Rectangle'
-import {ShapeTypeEnum, TShape, TShapeImage, TShapeRect, TShapeText} from "../types";
+import {ShapeTypeEnum, TShapeRect, TShapeText} from "../types";
 import Konva from 'konva';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
@@ -26,11 +26,6 @@ const Item = styled('div')(({theme}) => ({
 }));
 
 export default function DrawingContainer() {
-
-    // const [text, setText] = useState("Click to resize. Double click to edit.");
-    // const [width, setWidth] = useState(200);
-    // const [height, setHeight] = useState(200);
-    // const [selected, setSelected] = useState(false);
 
     const dispatch = useDispatch()
     const {drawingDocument, selectedId} = useSelector((state: RootState) => state.drawingReducer);
@@ -85,32 +80,16 @@ export default function DrawingContainer() {
                                             return (
                                                 <TextShape
                                                     key={i}
-                                                    // x={50}
-                                                    // y={50}
-                                                    // text={shape.text}
                                                     colour="#FFDAE1"
-                                                    // onTextChange={(value) => setText(value)}
-                                                    // width={width}
-                                                    // height={height}
                                                     selected={shape.id === selectedId}
-                                                    // isSelected={shape.id === selectedId}
                                                     onSelect={() => {
                                                         dispatch(selectShape(shape.id));
                                                     }}
-                                                    // onTextResize={(newWidth, newHeight) => {
-                                                    //     setWidth(newWidth);
-                                                    //     setHeight(newHeight);
-                                                    // }}
                                                     shapeProps={shape}
-                                                    // isSelected={shape.id === selectedId}
 
                                                     onClick={() => {
                                                         dispatch(selectShape(shape.id));
                                                     }}
-                                                    // onTextClick={(newSelected) => {
-                                                    //     // setSelected(newSelected);
-                                                    //     dispatch(selectShape(shape.id));
-                                                    // }}
                                                     onChange={(newAttrs: TShapeText) => {
                                                         const rects = drawingDocument.shapes.slice();
                                                         rects[i] = newAttrs;
