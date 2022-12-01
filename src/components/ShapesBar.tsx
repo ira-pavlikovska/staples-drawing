@@ -25,7 +25,7 @@ export default function ShapesBar() {
         y: 0,
         width: 0,
         height: 0,
-        text: 'new text',
+        text: 'new text - click to resize, double-click to edit',
         fill: 'red',
         id: 'text',
     }
@@ -44,12 +44,12 @@ export default function ShapesBar() {
     return (
         <div style={{display: "flex", flexDirection: "column"}}>
             <IconButton
-                onClick={() => dispatch(addShape(newText))}
+                onClick={() => dispatch(addShape({...newText, id: 'text' + uuidv4()}))}
                 color="primary" aria-label="Text" component="label">
                 <TextSnippet/>
             </IconButton>
             <IconButton
-                onClick={() => dispatch(addShape({...newImage, id: 'rect' + uuidv4()}))}
+                onClick={() => dispatch(addShape({...newImage, id: 'image' + uuidv4()}))}
                 color="primary" aria-label="Image" component="label">
                 <Photo/>
             </IconButton>

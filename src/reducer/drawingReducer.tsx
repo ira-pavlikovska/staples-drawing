@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {ShapeTypeEnum, TDrawingDocument, TShape, TShapeImage, TShapeRect, TShapeText} from "../types";
+import {TDrawingDocument, TShape} from "../types";
 
 interface drawingState {
     drawingDocument: TDrawingDocument,
@@ -12,57 +12,6 @@ const cloneDoc = (doc: TDrawingDocument) => JSON.parse(JSON.stringify(doc))
 
 const initialDoc: TDrawingDocument = {
     shapes: [
-        {
-            type: ShapeTypeEnum.rect,
-            x: 10,
-            y: 10,
-            width: 100,
-            height: 100,
-            fill: 'red',
-            id: 'rect1',
-        },
-        {
-            type: ShapeTypeEnum.rect,
-            x: 150,
-            y: 150,
-            width: 100,
-            height: 100,
-            fill: 'green',
-            id: 'rect2',
-        },
-
-        // {
-        //     type: ShapeTypeEnum.rect,
-        //     x: 10,
-        //     y: 10,
-        //     width: 200,
-        //     height: 100
-        // } as TShapeRect,
-        // {
-        //     type: ShapeTypeEnum.rect,
-        //     x: 110,
-        //     y: 150,
-        //     width: 50,
-        //     height: 100
-        // } as TShapeRect,
-        // {
-        //     type: ShapeTypeEnum.text,
-        //     x: 170,
-        //     y: 150,
-        //     width: 50,
-        //     height: 100,
-        //     text: 'Life is an Adventure'
-        // } as TShapeText,
-        {
-            type: ShapeTypeEnum.image,
-            x: 170,
-            y: 200,
-            width: 70,
-            height: 100,
-            fill: 'white',
-            id: 'image1',
-            imageURL: 'https://konvajs.org/assets/lion.png',
-        } as TShapeImage,
     ]
 }
 
@@ -106,8 +55,8 @@ export const drawingSlice = createSlice({
             // set default position and size
             newShape.x = 200
             newShape.y = 200
-            newShape.width = 100
-            newShape.height = 100
+            newShape.width = 200
+            newShape.height = 200
 
             state.drawingDocument.shapes = [...state.drawingDocument.shapes, newShape]
             state.history = [cloneDoc(state.drawingDocument), ...state.history]

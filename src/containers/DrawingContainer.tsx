@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState} from 'react';
 import {Box} from '@mui/system';
 import Grid from '@mui/system/Unstable_Grid';
@@ -12,6 +13,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
 import {selectShape, updateShapes} from "../reducer/drawingReducer";
 import ImageShape from "../components/shapes/ImageShape";
+import {TextShape} from "../components/shapes/TextShape/TextShape";
 
 
 const Item = styled('div')(({theme}) => ({
@@ -24,6 +26,11 @@ const Item = styled('div')(({theme}) => ({
 }));
 
 export default function DrawingContainer() {
+
+    // const [text, setText] = useState("Click to resize. Double click to edit.");
+    // const [width, setWidth] = useState(200);
+    // const [height, setHeight] = useState(200);
+    // const [selected, setSelected] = useState(false);
 
     const dispatch = useDispatch()
     const {drawingDocument, selectedId} = useSelector((state: RootState) => state.drawingReducer);
@@ -57,9 +64,6 @@ export default function DrawingContainer() {
                             <Layer>
                                 {drawingDocument.shapes.map((shape, i) => {
                                     switch (shape.type) {
-                                        case ShapeTypeEnum.circle:
-                                            break
-
                                         case ShapeTypeEnum.rect:
                                             return (
                                                 <Rectangle
@@ -76,10 +80,45 @@ export default function DrawingContainer() {
                                                     }}
                                                 />
                                             );
-                                            break
 
                                         case ShapeTypeEnum.text:
-                                            break
+                                            return (
+                                                <TextShape
+                                                    key={i}
+                                                    // x={50}
+                                                    // y={50}
+                                                    // text={shape.text}
+                                                    colour="#FFDAE1"
+                                                    // onTextChange={(value) => setText(value)}
+                                                    // width={width}
+                                                    // height={height}
+                                                    selected={shape.id === selectedId}
+                                                    // isSelected={shape.id === selectedId}
+                                                    onSelect={() => {
+                                                        dispatch(selectShape(shape.id));
+                                                    }}
+                                                    // onTextResize={(newWidth, newHeight) => {
+                                                    //     setWidth(newWidth);
+                                                    //     setHeight(newHeight);
+                                                    // }}
+                                                    shapeProps={shape}
+                                                    // isSelected={shape.id === selectedId}
+
+                                                    onClick={() => {
+                                                        dispatch(selectShape(shape.id));
+                                                    }}
+                                                    // onTextClick={(newSelected) => {
+                                                    //     // setSelected(newSelected);
+                                                    //     dispatch(selectShape(shape.id));
+                                                    // }}
+                                                    onChange={(newAttrs: TShapeText) => {
+                                                        const rects = drawingDocument.shapes.slice();
+                                                        rects[i] = newAttrs;
+                                                        dispatch(updateShapes(rects))
+                                                    }}
+
+                                                />
+                                            )
 
                                         case ShapeTypeEnum.image:
                                             return (
@@ -97,12 +136,10 @@ export default function DrawingContainer() {
                                                     }}
                                                 />
                                             );
-                                            break
                                     }
 
 
                                 })}
-                                {/*<ImageShape/>*/}
                             </Layer>
                         </Stage>
                     </Item>
