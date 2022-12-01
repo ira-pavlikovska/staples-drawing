@@ -16,6 +16,9 @@ npm start
 
 <img width="1376" alt="Screenshot 2022-11-30 at 6 52 00 PM" src="https://user-images.githubusercontent.com/33914030/204946900-6339ed21-4b8d-46ab-89eb-70c89380e391.png">
 
+# Tech stack
+
+React, Redux, MaterialUI, TypeScript, KonvaJS
 
 # Notes
 
