@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# Steps to run 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Steps to run 
+```
+npm install
+npm start
+```
 
-## Available Scripts
 
-In the project directory, you can run:
+## Demo recording
 
-### `yarn start`
+[Drawing app recording on Google Photos](https://photos.app.goo.gl/MPCLnPu3GxXiZvrt7)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## App screenshot
 
-### `yarn test`
+<img width="1376" alt="Screenshot 2022-11-30 at 6 52 00 PM" src="https://user-images.githubusercontent.com/33914030/204946900-6339ed21-4b8d-46ab-89eb-70c89380e391.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+# Notes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Initially I tried to implement the app using core HTML5Canvas but it may take much more time. So I found lib https://konvajs.org/ and used it. If you interested in core HTML5Canvas please check 'main-core-canvas' branch. I pulled KonvaJS pieces from WWW, so they are not pefect TypeScript code (src/components/shapes folder). All other code is typed by me and is valid TypeScript.
